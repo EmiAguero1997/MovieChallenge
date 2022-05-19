@@ -13,6 +13,7 @@ export class AppserviceService {
   constructor(private _http: HttpClient) { }
 
   getMovies():Observable<any>{
-    let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization');
+    let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + this.token);
+    return this._http.get(this.url +'movie/now_playing',{headers:headers});
   }
 }
